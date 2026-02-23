@@ -1,75 +1,117 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
+import dynamic from "next/dynamic";
+
+/* ── Lazy-load the 3D animation so it doesn't block initial paint ── */
+const NeuralStack = dynamic(() => import("./NeuralStack"), { ssr: false });
 
 export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative flex min-h-screen items-center justify-center px-6"
+      className="relative flex min-h-screen items-center overflow-hidden px-6 lg:px-16"
     >
-      <div className="mx-auto max-w-3xl text-center">
+      <div className="mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-12 lg:grid-cols-2">
+        {/* ─── LEFT: Text Content ─── */}
+        <div className="z-10 max-w-xl">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+          >
+            <h1 className="text-5xl font-bold tracking-tight text-foreground sm:text-6xl lg:text-7xl">
+              Rayaan Attari
+            </h1>
+            <p className="mt-3 text-xs font-medium tracking-[0.3em] text-muted-foreground uppercase sm:text-sm">
+              Machine Learning Engineer
+            </p>
+          </motion.div>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.15, ease: "easeOut" }}
+            className="mt-8 text-base leading-[1.75] text-muted sm:text-lg"
+          >
+            I’m a Machine Learning Engineer with 3+ years of experience building and deploying real-world AI systems across healthcare, fintech, and enterprise software. My work sits at the intersection of applied machine learning, product, and infrastructure, from early prototypes to production systems running in the cloud on GCP and AWS.
+          </motion.p>
+
+          {/* CTA row */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
+            className="mt-10 flex items-center gap-6"
+          >
+            <a
+              href="#projects"
+              className="inline-flex items-center rounded bg-foreground px-6 py-3 text-sm font-semibold text-background transition-colors duration-200 hover:bg-foreground/90"
+            >
+              View Projects
+            </a>
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-medium text-muted underline underline-offset-4 transition-colors duration-200 hover:text-foreground"
+            >
+              Download Resume
+            </a>
+            <a
+              href="#contact"
+              className="text-sm font-medium text-muted underline underline-offset-4 transition-colors duration-200 hover:text-foreground"
+            >
+              Contact
+            </a>
+          </motion.div>
+
+          {/* Social proof logos */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
+            className="mt-14 flex items-center gap-10"
+          >
+            <span className="text-[10px] font-medium tracking-[0.2em] text-muted-foreground/60 uppercase">
+              Previously at
+            </span>
+            <div className="flex items-center gap-8">
+              <Image
+                src="/columbia-logo.png"
+                alt="Columbia University"
+                width={28}
+                height={28}
+                className="opacity-40 grayscale transition-opacity duration-300 hover:opacity-70"
+              />
+              <Image
+                src="/routerr-logo.png"
+                alt="Routerr Health"
+                width={72}
+                height={20}
+                className="h-5 w-auto opacity-40 grayscale transition-opacity duration-300 hover:opacity-70"
+              />
+              <Image
+                src="/perficient-logo.png"
+                alt="Perficient"
+                width={80}
+                height={20}
+                className="h-5 w-auto opacity-40 grayscale transition-opacity duration-300 hover:opacity-70"
+              />
+            </div>
+          </motion.div>
+        </div>
+
+        {/* ─── RIGHT: 3D Neural Stack ─── */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.0, delay: 0.4, ease: "easeOut" }}
+          className="hidden h-[560px] w-full lg:block"
         >
-          <p className="mb-4 text-sm font-medium tracking-widest text-accent-foreground uppercase">
-            ML Engineer · Healthcare AI · Fintech · Cloud Infrastructure
-          </p>
-          <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-6xl lg:text-7xl">
-            Rayaan Attari
-          </h1>
+          <NeuralStack />
         </motion.div>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-          className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted sm:text-lg"
-        >
-          Machine Learning Engineer with 3+ years of experience building and
-          deploying real-world AI systems across healthcare, fintech, and
-          enterprise software. MS CS @ Columbia · Focused on LLM-powered
-          products, intelligent agents, and real-time ML systems that solve
-          practical problems.
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
-          className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
-        >
-          <a
-            href="#projects"
-            className="inline-flex items-center rounded-lg bg-foreground px-6 py-3 text-sm font-medium text-background transition-all duration-200 hover:bg-foreground/90"
-          >
-            View Projects
-          </a>
-          <a
-            href="/resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center rounded-lg border border-border px-6 py-3 text-sm font-medium text-foreground transition-all duration-200 hover:border-border-hover hover:bg-card"
-          >
-            Download Resume
-          </a>
-          <a
-            href="#contact"
-            className="inline-flex items-center rounded-lg border border-border px-6 py-3 text-sm font-medium text-foreground transition-all duration-200 hover:border-border-hover hover:bg-card"
-          >
-            Contact
-          </a>
-        </motion.div>
-      </div>
-
-      {/* Subtle gradient accent */}
-      <div
-        className="pointer-events-none absolute inset-0 overflow-hidden"
-        aria-hidden="true"
-      >
-        <div className="absolute top-1/4 left-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/5 blur-3xl" />
       </div>
     </section>
   );

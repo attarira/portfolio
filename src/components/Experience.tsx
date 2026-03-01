@@ -13,10 +13,10 @@ export default function Experience() {
           subtitle="3+ years building AI systems across healthcare, fintech, and enterprise software."
         />
 
-        <div className="relative">
-          {/* Timeline line */}
+        <div className="relative mx-auto mt-16 max-w-3xl">
+          {/* Vertical Timeline line */}
           <div
-            className="absolute top-0 bottom-0 left-0 w-px bg-border md:left-1/2 md:-translate-x-px"
+            className="absolute top-0 bottom-0 left-[15px] w-px bg-border/50"
             aria-hidden="true"
           />
 
@@ -32,47 +32,41 @@ export default function Experience() {
                   delay: index * 0.1,
                   ease: "easeOut",
                 }}
-                className={`relative flex flex-col md:flex-row ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                  }`}
+                className="relative pl-12 sm:pl-16"
               >
                 {/* Timeline dot */}
                 <div
-                  className="absolute top-2 left-0 z-10 h-2.5 w-2.5 -translate-x-1 rounded-full border-2 border-accent bg-background md:left-1/2 md:-translate-x-[5px]"
+                  className="absolute top-1.5 left-[11px] z-10 h-2.5 w-2.5 rounded-full border-2 border-accent bg-background"
                   aria-hidden="true"
                 />
 
                 {/* Content card */}
-                <div
-                  className={`ml-6 w-full md:ml-0 md:w-1/2 ${index % 2 === 0 ? "md:pr-12" : "md:pl-12"
-                    }`}
-                >
-                  <div className="rounded-xl border border-border/60 bg-card p-6 transition-all duration-300 hover:border-border-hover hover:bg-card-hover">
-                    <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
-                      <h3 className="text-base font-semibold text-foreground">
-                        {exp.role}
-                      </h3>
-                      <span className="text-xs text-muted-foreground">
-                        {exp.dates}
-                      </span>
-                    </div>
-                    <p className="mt-1 text-sm text-accent-foreground">
-                      {exp.company}
-                    </p>
-                    <ul className="mt-4 space-y-2">
-                      {exp.achievements.map((achievement, i) => (
-                        <li
-                          key={i}
-                          className="flex gap-2 text-sm leading-relaxed text-muted"
-                        >
-                          <span
-                            className="mt-2 h-1 w-1 shrink-0 rounded-full bg-muted-foreground"
-                            aria-hidden="true"
-                          />
-                          {achievement}
-                        </li>
-                      ))}
-                    </ul>
+                <div className="group rounded-xl border border-transparent bg-transparent transition-all duration-300 hover:bg-white/[0.02]">
+                  <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
+                    <h3 className="text-lg font-semibold tracking-tight text-foreground transition-colors group-hover:text-accent-foreground">
+                      {exp.role}
+                    </h3>
+                    <span className="text-xs tracking-wider text-muted-foreground uppercase">
+                      {exp.dates}
+                    </span>
                   </div>
+                  <p className="mt-1 font-medium text-muted">
+                    {exp.company}
+                  </p>
+                  <ul className="mt-4 space-y-3">
+                    {exp.achievements.map((achievement, i) => (
+                      <li
+                        key={i}
+                        className="flex items-start gap-3 text-[14px] leading-relaxed text-muted-foreground transition-colors group-hover:text-muted"
+                      >
+                        <span
+                          className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent/50"
+                          aria-hidden="true"
+                        />
+                        <span>{achievement}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </motion.div>
             ))}

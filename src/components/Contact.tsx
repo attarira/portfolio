@@ -184,8 +184,8 @@ function EmailRow({ email, label, icon, delay = 0 }: EmailRowProps) {
         {/* Tooltip */}
         <span
           className={`pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md px-2 py-1 text-[10px] font-medium transition-all duration-200 ${copied
-              ? "bg-emerald-500/20 text-emerald-400 opacity-100"
-              : "bg-card text-muted-foreground opacity-0 group-hover:opacity-100"
+            ? "bg-emerald-500/20 text-emerald-400 opacity-100"
+            : "bg-card text-muted-foreground opacity-0 group-hover:opacity-100"
             }`}
         >
           {copied ? "Copied!" : "Copy"}
@@ -272,13 +272,13 @@ export default function Contact() {
             <div className="space-y-3">
               <EmailRow
                 email="rayaan.attari@gmail.com"
-                label="Professional"
+                label="PERSONAL (gmail)"
                 icon={<MailIcon className="h-5 w-5" />}
                 delay={0.05}
               />
               <EmailRow
                 email="rta2125@columbia.edu"
-                label="Academic"
+                label="WORK (columbia)"
                 icon={<GraduationCapIcon className="h-5 w-5" />}
                 delay={0.1}
               />

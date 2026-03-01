@@ -36,10 +36,10 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
           >
-            <h1 className="text-5xl font-bold tracking-tight text-foreground sm:text-6xl lg:text-7xl">
+            <h1 className="text-5xl font-bold tracking-tighter text-foreground sm:text-7xl lg:text-8xl">
               Rayaan Attari
             </h1>
-            <p className="mt-3 text-xs font-medium tracking-[0.3em] text-muted-foreground uppercase sm:text-sm">
+            <p className="mt-4 text-xs font-semibold tracking-[0.25em] text-muted-foreground uppercase sm:text-sm">
               Machine Learning Engineer
             </p>
           </motion.div>
@@ -53,16 +53,15 @@ export default function Hero() {
             I&apos;m a Machine Learning Engineer with 3+ years of experience building and deploying real-world AI systems across healthcare, fintech, and enterprise software. My work sits at the intersection of applied machine learning, product, and infrastructure, from early prototypes to production systems running in the cloud on GCP and AWS.
           </motion.p>
 
-          {/* CTA row */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
-            className="mt-10 flex items-center gap-6"
+            className="mt-10 flex flex-wrap items-center gap-6"
           >
             <a
               href="#projects"
-              className="inline-flex items-center rounded bg-foreground px-6 py-3 text-sm font-semibold text-background transition-colors duration-200 hover:bg-foreground/90"
+              className="inline-flex items-center rounded-lg bg-white/10 px-8 py-3.5 text-sm font-semibold text-white backdrop-blur-md border border-white/10 transition-all duration-300 hover:bg-white/15 hover:border-white/20 hover:-translate-y-0.5 shadow-lg shadow-black/20"
             >
               View Projects
             </a>
@@ -70,13 +69,13 @@ export default function Hero() {
               href="/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm font-medium text-muted underline underline-offset-4 transition-colors duration-200 hover:text-foreground"
+              className="inline-flex items-center rounded-lg bg-transparent px-8 py-3.5 text-sm font-medium text-muted hover:text-foreground backdrop-blur-sm border border-transparent transition-all duration-300 hover:bg-white/5 hover:border-white/10"
             >
               Download Resume
             </a>
             <a
               href="#contact"
-              className="text-sm font-medium text-muted underline underline-offset-4 transition-colors duration-200 hover:text-foreground"
+              className="inline-flex items-center rounded-lg bg-transparent px-8 py-3.5 text-sm font-medium text-muted hover:text-foreground backdrop-blur-sm border border-transparent transition-all duration-300 hover:bg-white/5 hover:border-white/10"
             >
               Contact
             </a>
@@ -98,21 +97,21 @@ export default function Hero() {
                 alt="Columbia University"
                 width={28}
                 height={28}
-                className="opacity-40 grayscale transition-opacity duration-300 hover:opacity-70"
+                className="opacity-40 grayscale contrast-200 transition-all duration-300 hover:opacity-100 hover:grayscale-0 hover:contrast-100"
               />
               <Image
                 src="/routerr-logo.png"
                 alt="Routerr Health"
                 width={72}
                 height={20}
-                className="h-5 w-auto opacity-40 grayscale transition-opacity duration-300 hover:opacity-70"
+                className="h-5 w-auto opacity-40 grayscale contrast-200 brightness-150 transition-all duration-300 hover:opacity-100 hover:grayscale-0 hover:contrast-100 hover:brightness-100"
               />
               <Image
                 src="/perficient-logo.png"
                 alt="Perficient"
                 width={80}
                 height={20}
-                className="h-5 w-auto opacity-40 grayscale transition-opacity duration-300 hover:opacity-70"
+                className="h-5 w-auto opacity-40 grayscale contrast-200 brightness-150 transition-all duration-300 hover:opacity-100 hover:grayscale-0 hover:contrast-100 hover:brightness-100"
               />
             </div>
           </motion.div>

@@ -68,7 +68,7 @@ export default function Projects() {
                     delay: index * 0.1,
                     ease: "easeOut",
                   }}
-                  className="group relative flex flex-col overflow-hidden rounded-2xl border border-white/5 bg-white/[0.02] p-8 transition-all duration-500 hover:-translate-y-1 hover:border-white/10 hover:bg-white/[0.04] hover:shadow-2xl hover:shadow-black/50"
+                  className="group relative flex flex-col overflow-hidden rounded-2xl border border-white/5 bg-white/[0.02] p-8 transition-all duration-500 hover:-translate-y-1 hover:scale-[1.01] hover:border-white/20 hover:bg-white/[0.04] hover:shadow-2xl hover:shadow-black/50"
                 >
                   {/* Subtle gradient hover effect */}
                   <div className="absolute inset-0 z-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
@@ -147,8 +147,8 @@ export default function Projects() {
                   key={i}
                   onClick={() => setCurrentPage(i)}
                   className={`h-2 rounded-full transition-all duration-300 ${currentPage === i
-                      ? "bg-accent w-8"
-                      : "bg-white/20 w-2 hover:bg-white/40"
+                    ? "bg-accent w-8"
+                    : "bg-white/20 w-2 hover:bg-white/40"
                     }`}
                   aria-label={`Go to page ${i + 1}`}
                 />

@@ -25,7 +25,7 @@ export const projects: Project[] = [
       "Engineered an AI agent that converts natural language goals into executable workflows, dependencies, and automated notifications.",
     techStack: ["Python", "Claude", "React", "Vite"],
     githubUrl: "/coming-soon",
-    demoUrl: "/projects/lifeos/demo",
+    demoUrl: "/coming-soon",
   },
   {
     id: "media-watcher",
@@ -39,7 +39,7 @@ export const projects: Project[] = [
       "Utilized search grounding and fine-tuned sentiment models to extract entities in real-time, reducing compliance review time by ~70%.",
     techStack: ["Python", "Gemini", "RAG", "Sentiment Analysis"],
     githubUrl: "/coming-soon",
-    demoUrl: "/projects/media-watcher/demo",
+    demoUrl: "/coming-soon",
   },
   {
     title: "Spike Sorting: Efficient Dimensionality Reduction",
@@ -150,7 +150,7 @@ export const projects: Project[] = [
       "Performed research on and implemented various classification ML models, including XGBoost and Random Forests.",
     techStack: ["Java", "Machine Learning", "XGBoost", "Random Forest"],
     githubUrl: "/coming-soon",
-    demoUrl: "/projects/movie-rec/demo",
+    demoUrl: "/coming-soon",
   },
   {
     title: "Hospital-at-Home AI Scheduling Engine",
@@ -170,7 +170,7 @@ export const projects: Project[] = [
       "Docker",
       "Kubernetes",
     ],
-    demoUrl: "/projects/hospital-at-home-ai/demo",
+    demoUrl: "/coming-soon",
   },
   {
     title: "AI Credit Risk Early Warning System",
@@ -189,7 +189,7 @@ export const projects: Project[] = [
       "MCP",
     ],
     githubUrl: "/coming-soon",
-    demoUrl: "/projects/credit-risk/demo",
+    demoUrl: "/coming-soon",
   },
   {
     title: "Real-Time Sentiment Analysis Engine",
@@ -206,7 +206,7 @@ export const projects: Project[] = [
       "Python",
       "NLP",
     ],
-    demoUrl: "/projects/sentiment-engine/demo",
+    demoUrl: "/coming-soon",
   },
 
 ];

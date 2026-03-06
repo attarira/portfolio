@@ -111,16 +111,18 @@ export default function Projects() {
                     </div>
 
                     <div className="mt-auto pt-8 flex items-center gap-6">
-                      <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group/link inline-flex items-center gap-2 text-sm font-medium text-muted transition-colors hover:text-foreground"
-                        aria-label={`View ${project.title} source code on GitHub`}
-                      >
-                        Source Code
-                        <ArrowIcon />
-                      </a>
+                      {project.githubUrl && (
+                        <a
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group/link inline-flex items-center gap-2 text-sm font-medium text-muted transition-colors hover:text-foreground"
+                          aria-label={`View ${project.title} source code on GitHub`}
+                        >
+                          Source Code
+                          <ArrowIcon />
+                        </a>
+                      )}
                       {project.demoUrl && (
                         <a
                           href={project.demoUrl}
@@ -130,6 +132,30 @@ export default function Projects() {
                           aria-label={`View ${project.title} live demo`}
                         >
                           Live Demo
+                          <ArrowIcon />
+                        </a>
+                      )}
+                      {project.paperUrl && (
+                        <a
+                          href={project.paperUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group/link inline-flex items-center gap-2 text-sm font-medium text-purple-400 transition-colors hover:text-purple-300"
+                          aria-label={`Read ${project.title} paper`}
+                        >
+                          Read Paper
+                          <ArrowIcon />
+                        </a>
+                      )}
+                      {project.websiteUrl && (
+                        <a
+                          href={project.websiteUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group/link inline-flex items-center gap-2 text-sm font-medium text-blue-400 transition-colors hover:text-blue-300"
+                          aria-label={`Visit ${project.title} website`}
+                        >
+                          Visit Website
                           <ArrowIcon />
                         </a>
                       )}

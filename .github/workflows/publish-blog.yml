@@ -1,0 +1,44 @@
+name: Monthly Blog Publish
+
+on:
+  schedule:
+    # Run at 00:00 on the 5th day of every month
+    - cron: '0 0 5 * *'
+  # Allow manual trigger for testing
+  workflow_dispatch:
+
+jobs:
+  publish-blog:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate New Blog Post
+        run: node scripts/publish-blog.js
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/data/blog.ts
+          
+          # Check if there are any changes to commit
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "chore: auto-publish monthly blog [skip ci]"
+            git push
+          fi

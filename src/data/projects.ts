@@ -1,16 +1,20 @@
 export interface Project {
+  id?: string;
   title: string;
   description: string;
   problem: string;
   outcome: string;
   techStack: string[];
-  githubUrl: string;
+  githubUrl?: string;
   demoUrl?: string;
+  paperUrl?: string;
+  websiteUrl?: string;
   date?: string;
 }
 
 export const projects: Project[] = [
   {
+    id: "lifeos",
     title: "LifeOS: Personal Planning & Decision Agent",
     date: "Feb 2026",
     description:
@@ -20,9 +24,11 @@ export const projects: Project[] = [
     outcome:
       "Engineered an AI agent that converts natural language goals into executable workflows, dependencies, and automated notifications.",
     techStack: ["Python", "Claude", "React", "Vite"],
-    githubUrl: "https://github.com/attarira",
+    githubUrl: "/coming-soon",
+    demoUrl: "/projects/lifeos/demo",
   },
   {
+    id: "media-watcher",
     title: "Media Watcher: AI-powered News Intelligence",
     date: "Jan 2026",
     description:
@@ -32,7 +38,8 @@ export const projects: Project[] = [
     outcome:
       "Utilized search grounding and fine-tuned sentiment models to extract entities in real-time, reducing compliance review time by ~70%.",
     techStack: ["Python", "Gemini", "RAG", "Sentiment Analysis"],
-    githubUrl: "https://github.com/attarira",
+    githubUrl: "/coming-soon",
+    demoUrl: "/projects/media-watcher/demo",
   },
   {
     title: "Spike Sorting: Efficient Dimensionality Reduction",
@@ -44,7 +51,8 @@ export const projects: Project[] = [
     outcome:
       "Benchmarked 20+ methods (UMAP, t-SNE, VAEs), achieving 10x compression with 85% information retention; published results under review.",
     techStack: ["Python", "PyTorch", "Scikit-Learn"],
-    githubUrl: "https://github.com/attarira",
+    githubUrl: "/coming-soon",
+    paperUrl: "/coming-soon",
   },
   {
     title: "Query Expansion with SpanBERT & Gemini",
@@ -56,7 +64,7 @@ export const projects: Project[] = [
     outcome:
       "Improved top-10 search relevance by 40% over baseline methods.",
     techStack: ["Python", "LLMs", "Google Cloud", "SpanBERT", "Gemini"],
-    githubUrl: "https://github.com/attarira",
+    githubUrl: "/coming-soon",
   },
   {
     title: "Neural Network Dependency Parser",
@@ -68,7 +76,7 @@ export const projects: Project[] = [
     outcome:
       "Engineered feature embeddings for POS tags, dependency arcs, and stack buffering, achieving a LAS score of 70 in testing.",
     techStack: ["Python", "TensorFlow"],
-    githubUrl: "https://github.com/attarira",
+    githubUrl: "/coming-soon",
   },
   {
     title: "Predicting Risk of Heart Disease",
@@ -80,7 +88,7 @@ export const projects: Project[] = [
     outcome:
       "Evaluated multiple classifiers and optimized XGBoost to achieve 0.74 recall on high-risk cases.",
     techStack: ["Python", "Scikit-learn", "PyTorch", "XGBoost"],
-    githubUrl: "https://github.com/attarira",
+    githubUrl: "/coming-soon",
   },
   {
     title: "Optimizing Hypervisor-Guest Communication",
@@ -92,7 +100,7 @@ export const projects: Project[] = [
     outcome:
       "Improved responsiveness by implementing hot unplugging and affinity adjustments for the UFO, CPS models.",
     techStack: ["C", "QEMU-KVM", "Virtualization"],
-    githubUrl: "https://github.com/attarira",
+    githubUrl: "/coming-soon",
   },
   {
     title: "An Analysis of Schedulers for the Cloud",
@@ -104,7 +112,8 @@ export const projects: Project[] = [
     outcome:
       "Benchmarked the Rorke scheduler against UFO, CPS frameworks, demonstrating up to 21% lower p95 latency.",
     techStack: ["Cloud Computing", "Virtualization", "Benchmarking"],
-    githubUrl: "https://github.com/attarira",
+    githubUrl: "/coming-soon",
+    paperUrl: "/coming-soon",
   },
   {
     title: "Bakery Business E-Commerce Application",
@@ -116,7 +125,7 @@ export const projects: Project[] = [
     outcome:
       "Managed business logic with Node.js to streamline order processing, inventory management, and revenue tracking.",
     techStack: ["React", "Node.js", "E-Commerce"],
-    githubUrl: "https://github.com/attarira",
+    websiteUrl: "/coming-soon",
   },
   {
     title: "Operating System Kernel",
@@ -128,7 +137,7 @@ export const projects: Project[] = [
     outcome:
       "Configured device drivers and interrupt handlers to allow the execution of programs within protected memory.",
     techStack: ["C", "Assembly", "OS Development"],
-    githubUrl: "https://github.com/attarira",
+    githubUrl: "/coming-soon",
   },
   {
     title: "Movie Recommendation System",
@@ -140,7 +149,8 @@ export const projects: Project[] = [
     outcome:
       "Performed research on and implemented various classification ML models, including XGBoost and Random Forests.",
     techStack: ["Java", "Machine Learning", "XGBoost", "Random Forest"],
-    githubUrl: "https://github.com/attarira",
+    githubUrl: "/coming-soon",
+    demoUrl: "/projects/movie-rec/demo",
   },
   {
     title: "Hospital-at-Home AI Scheduling Engine",
@@ -160,7 +170,7 @@ export const projects: Project[] = [
       "Docker",
       "Kubernetes",
     ],
-    githubUrl: "https://github.com/attarira",
+    demoUrl: "/projects/hospital-at-home-ai/demo",
   },
   {
     title: "AI Credit Risk Early Warning System",
@@ -178,7 +188,8 @@ export const projects: Project[] = [
       "LangChain",
       "MCP",
     ],
-    githubUrl: "https://github.com/attarira",
+    githubUrl: "/coming-soon",
+    demoUrl: "/projects/credit-risk/demo",
   },
   {
     title: "Real-Time Sentiment Analysis Engine",
@@ -195,25 +206,7 @@ export const projects: Project[] = [
       "Python",
       "NLP",
     ],
-    githubUrl: "https://github.com/attarira",
+    demoUrl: "/projects/sentiment-engine/demo",
   },
-  {
-    title: "Cloud-Native Microservices Platform",
-    description:
-      "Modernized a legacy monolithic automobile sales rewards platform into a scalable, event-driven microservices architecture on Google Cloud.",
-    problem:
-      "Replacing a legacy monolith with a cloud-native architecture to improve modularity, deployment speed, and real-time data processing for 100K+ users.",
-    outcome:
-      "Reduced deployment time by 40%, streamlined database queries by 1.5x, and automated ML model retraining with Bayesian hyperparameter optimization on Vertex AI.",
-    techStack: [
-      "Java",
-      "Spring Boot",
-      "GCP",
-      "Kubernetes",
-      "Cloud SQL",
-      "Pub/Sub",
-      "Vertex AI",
-    ],
-    githubUrl: "https://github.com/attarira",
-  },
+
 ];

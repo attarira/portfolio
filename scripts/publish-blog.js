@@ -56,7 +56,7 @@ function appendBlog() {
       content.substring(closingBracketIndex);
       
     fs.writeFileSync(blogFilePath, newContent, 'utf-8');
-    console.log(\`Successfully appended blog for \${formattedDate}\`);
+    console.log(`Successfully appended blog for ${formattedDate}`);
   } catch (error) {
     console.error("Failed to append blog:", error);
     process.exit(1);

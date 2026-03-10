@@ -1,11 +1,21 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { blogs } from "@/data/blog";
 import SectionHeading from "./SectionHeading";
 import Link from "next/link";
 
 export default function Blog() {
+  const [currentPage, setCurrentPage] = useState(0);
+  const blogsPerPage = 3;
+  const totalPages = Math.ceil(blogs.length / blogsPerPage);
+
+  const visibleBlogs = blogs.slice(
+    currentPage * blogsPerPage,
+    (currentPage + 1) * blogsPerPage
+  );
+
   return (
     <section id="blog" className="px-6 py-24">
       <div className="mx-auto max-w-4xl">
@@ -14,8 +24,8 @@ export default function Blog() {
           subtitle="Thoughts and technical deep-dives on machine learning, systems architecture, and AI engineering."
         />
 
-        <div className="flex flex-col gap-6">
-          {blogs.map((post, index) => (
+        <div className="flex flex-col gap-6 min-h-[500px]">
+          {visibleBlogs.map((post, index) => (
             <Link key={post.slug} href={`/blog/${post.slug}`} className="block">
               <motion.article
                 initial={{ opacity: 0, y: 24 }}
@@ -61,6 +71,23 @@ export default function Blog() {
             </Link>
           ))}
         </div>
+
+        {totalPages > 0 && (
+          <div className="mt-12 flex justify-center gap-3">
+            {Array.from({ length: totalPages }).map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrentPage(i)}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  currentPage === i
+                    ? "bg-accent w-8"
+                    : "bg-white/20 w-2 hover:bg-white/40"
+                }`}
+                aria-label={`Go to page ${i + 1}`}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

@@ -17,6 +17,48 @@ export interface Blog {
 
 export const blogs: Blog[] = [
   {
+    slug: "designing-autonomous-agents",
+    title: "Designing Autonomous AI Agents for Software Engineering",
+    date: "Mar 5, 2026",
+    readTime: "4 min read",
+    preview: "AI coding assistants are evolving from simple autocomplete to autonomous agents capable of navigating codebases, debugging, and executing multi-step plans. In this post, I break down the core components of agentic coding systems—from tool use and working memory to planning loops.",
+    tags: ["AI Agents", "LLMs", "Software Engineering"],
+    content: [
+      {
+        type: "paragraph",
+        text: "The jump from large language models that write boilerplate code to true autonomous agents is perhaps the most exciting shift in software engineering today. While conventional tools are fantastic at predicting the next few lines of code, an agentic system is designed to take a high-level goal, plan a series of actions, and execute them over an entire repository."
+      },
+      {
+        type: "heading",
+        text: "The Agent Loop: Plan, Act, Observe"
+      },
+      {
+        type: "paragraph",
+        text: "At the heart of an autonomous coding agent is the reasoning loop. Rather than a single pass through a model, the agent continuously interacts with its environment. It starts by breaking down a goal into a concrete plan. Then, it uses tools—like file readers, terminal commands, and abstract syntax tree parsers—to gather context. After each action, it observes the result and adjusts its plan accordingly. This iterative process is what allows it to handle complex, ambiguous tasks."
+      },
+      {
+        type: "heading",
+        text: "Tool Use and Environment Interaction"
+      },
+      {
+        type: "paragraph",
+        text: "An LLM in a vacuum cannot fix a bug. It needs hands. Tool use is the critical mechanism that bridges the gap between text generation and software engineering. We equip agents with capabilities such as reading files, running terminal commands, executing unit tests, and committing code. The challenge lies in teaching the model when and how to use these tools effectively without getting stuck in infinite loops or causing unintended side effects."
+      },
+      {
+        type: "heading",
+        text: "Managing Working Memory"
+      },
+      {
+        type: "paragraph",
+        text: "One of the most significant engineering challenges in agent design is managing context window limitations. A software repository contains far too many tokens for most models to digest simultaneously. Agents must dynamically page context in and out of their working memory. Techniques like hierarchical document summarization, semantic search arrays, and maintaining an active 'scratchpad' of findings are essential for keeping the agent focused."
+      },
+      {
+        type: "paragraph",
+        text: "Building these systems requires a fundamental shift in how we think about human-computer interaction. We are moving from giving computers instructions to giving them goals, and designing the guardrails and sensory inputs they need to succeed."
+      }
+    ]
+  },
+  {
     slug: "beyond-vector-search",
     title: "Beyond Vector Search: When RAG Needs a Knowledge Graph",
     date: "Feb 5, 2026",

@@ -24,7 +24,7 @@ export const projects: Project[] = [
     outcome:
       "Engineered an AI agent that converts natural language goals into executable workflows, dependencies, and automated notifications.",
     techStack: ["Python", "Claude", "React", "Vite"],
-    githubUrl: "/coming-soon",
+    githubUrl: "https://github.com/attarira/life-os",
     demoUrl: "/coming-soon",
   },
   {
@@ -38,7 +38,7 @@ export const projects: Project[] = [
     outcome:
       "Utilized search grounding and fine-tuned sentiment models to extract entities in real-time, reducing compliance review time by ~70%.",
     techStack: ["Python", "Gemini", "RAG", "Sentiment Analysis"],
-    githubUrl: "/coming-soon",
+    githubUrl: "https://github.com/attarira/media-watcher",
     demoUrl: "/coming-soon",
   },
   {
@@ -51,7 +51,7 @@ export const projects: Project[] = [
     outcome:
       "Benchmarked 20+ methods (UMAP, t-SNE, VAEs), achieving 10x compression with 85% information retention; published results under review.",
     techStack: ["Python", "PyTorch", "Scikit-Learn"],
-    githubUrl: "/coming-soon",
+    githubUrl: "https://github.com/attarira/neural-spike-sort",
     paperUrl: "/coming-soon",
   },
   {
@@ -64,7 +64,7 @@ export const projects: Project[] = [
     outcome:
       "Improved top-10 search relevance by 40% over baseline methods.",
     techStack: ["Python", "LLMs", "Google Cloud", "SpanBERT", "Gemini"],
-    githubUrl: "/coming-soon",
+    githubUrl: "https://github.com/attarira/semantic-search",
   },
   {
     title: "Neural Network Dependency Parser",

@@ -39,7 +39,7 @@ export const projects: Project[] = [
       "Utilized search grounding and fine-tuned sentiment models to extract entities in real-time, reducing compliance review time by ~70%.",
     techStack: ["Python", "Gemini", "RAG", "Sentiment Analysis"],
     githubUrl: "https://github.com/attarira/media-watcher",
-    demoUrl: "/coming-soon",
+    demoUrl: "/projects/media-watcher/demo",
   },
   {
     title: "Spike Sorting: Efficient Dimensionality Reduction",
@@ -52,7 +52,7 @@ export const projects: Project[] = [
       "Benchmarked 20+ methods (UMAP, t-SNE, VAEs), achieving 10x compression with 85% information retention; published results under review.",
     techStack: ["Python", "PyTorch", "Scikit-Learn"],
     githubUrl: "https://github.com/attarira/neural-spike-sort",
-    paperUrl: "/coming-soon",
+    paperUrl: "https://drive.google.com/file/d/1xtgBFvkUbxYchkWEw-W04bWBkZOBzUJU/view?usp=sharing",
   },
   {
     title: "Query Expansion with SpanBERT & Gemini",

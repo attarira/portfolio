@@ -144,42 +144,42 @@ function getInitialData(): MockLifeOSData {
       {
         id: "career", title: "Career",
         icon: <svg fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4"><path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" /></svg>,
-        bgColor: "bg-[#1E3354]", alert: true,
+        bgColor: "bg-gradient-to-br from-blue-500/10 to-transparent border-blue-500/20", alert: true,
         tasks: ["Update resume & portfolio", "Prep for interviews"], actionItems: ["Schedule mock interview"],
         totalTasks: 22, segments: [{ color: "#3B82F6", value: 50 }, { color: "#F97316", value: 30 }],
       },
       {
         id: "finance", title: "Finance",
         icon: <svg fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4"><path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
-        bgColor: "bg-[#1B432C]", alert: true,
+        bgColor: "bg-gradient-to-br from-emerald-500/10 to-transparent border-emerald-500/20", alert: true,
         tasks: ["Review monthly budget", "File quarterly taxes"], actionItems: ["File quarterly taxes"],
         totalTasks: 7, segments: [{ color: "#22C55E", value: 60 }, { color: "#EAB308", value: 20 }],
       },
       {
         id: "health", title: "Health",
         icon: <svg fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4"><path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>,
-        bgColor: "bg-[#255C69]",
+        bgColor: "bg-gradient-to-br from-cyan-500/10 to-transparent border-cyan-500/20",
         tasks: ["Morning workout routine", "Order vitamins"], actionItems: ["Book annual checkup"],
         totalTasks: 7, segments: [{ color: "#06B6D4", value: 70 }, { color: "#6366F1", value: 15 }],
       },
       {
         id: "personal-growth", title: "Personal Growth",
         icon: <svg fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4"><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg>,
-        bgColor: "bg-[#651A6A]",
+        bgColor: "bg-gradient-to-br from-purple-500/10 to-transparent border-purple-500/20",
         tasks: ["Complete online course", "Write journal entry"], actionItems: ["Read 20 pages"],
         totalTasks: 10, segments: [{ color: "#A855F7", value: 45 }, { color: "#EC4899", value: 35 }],
       },
       {
         id: "relationships", title: "Relationships",
         icon: <svg fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4"><path strokeLinecap="round" strokeLinejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" /></svg>,
-        bgColor: "bg-[#BC2B25]",
+        bgColor: "bg-gradient-to-br from-red-500/10 to-transparent border-red-500/20",
         tasks: ["Catch up with family", "Plan group dinner"], actionItems: ["Send birthday gift"],
         totalTasks: 10, segments: [{ color: "#EF4444", value: 80 }, { color: "#3B82F6", value: 10 }],
       },
       {
         id: "recreation", title: "Recreation",
         icon: <svg fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4"><path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" /></svg>,
-        bgColor: "bg-[#A74112]",
+        bgColor: "bg-gradient-to-br from-orange-500/10 to-transparent border-orange-500/20",
         tasks: ["Finish current book", "Plan weekend hike"], actionItems: ["Plan weekend hike"],
         totalTasks: 8, segments: [{ color: "#F97316", value: 65 }, { color: "#3B82F6", value: 20 }],
       },
@@ -314,20 +314,20 @@ export default function LifeOSDemo() {
     <DemoShell title="LifeOS" fetchData={fetchDemoData}>
       {(data) => {
         return <LifeOSDashboard initialData={data} dashData={dashData} setDashData={setDashData}
-          chatOpen={chatOpen} setChatOpen={setChatOpen} messages={messages} setMessages={setMessages}
+          chatOpen={chatOpen} setChatOpen={setChatOpen} messages={messages}
           inputValue={inputValue} setInputValue={setInputValue} isAgentTyping={isAgentTyping}
-          setIsAgentTyping={setIsAgentTyping} handleSend={handleSend} inputRef={inputRef} chatEndRef={chatEndRef} />;
+          handleSend={handleSend} inputRef={inputRef} chatEndRef={chatEndRef} />;
       }}
     </DemoShell>
   );
 }
 
 // Inner dashboard component that safely hydrates via useEffect
-function LifeOSDashboard({ initialData, dashData, setDashData, chatOpen, setChatOpen, messages, setMessages,
-  inputValue, setInputValue, isAgentTyping, setIsAgentTyping, handleSend, inputRef, chatEndRef }: {
+function LifeOSDashboard({ initialData, dashData, setDashData, chatOpen, setChatOpen, messages,
+  inputValue, setInputValue, isAgentTyping, handleSend, inputRef, chatEndRef }: {
   initialData: MockLifeOSData | null; dashData: MockLifeOSData | null; setDashData: (d: MockLifeOSData) => void;
-  chatOpen: boolean; setChatOpen: (v: boolean) => void; messages: ChatMessage[]; setMessages: React.Dispatch<React.SetStateAction<ChatMessage[]>>;
-  inputValue: string; setInputValue: (v: string) => void; isAgentTyping: boolean; setIsAgentTyping: (v: boolean) => void;
+  chatOpen: boolean; setChatOpen: (v: boolean) => void; messages: ChatMessage[];
+  inputValue: string; setInputValue: (v: string) => void; isAgentTyping: boolean;
   handleSend: (text?: string) => void; inputRef: React.RefObject<HTMLInputElement | null>; chatEndRef: React.RefObject<HTMLDivElement | null>;
 }) {
   useEffect(() => {
@@ -460,8 +460,8 @@ function LifeOSDashboard({ initialData, dashData, setDashData, chatOpen, setChat
               {dashData.focusAreas.map((area, idx) => (
                 <motion.div key={area.id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: idx * 0.05 }}
-                  className={`${area.bgColor} relative overflow-hidden rounded-xl p-5 border border-white/5 shadow-lg group hover:ring-1 hover:ring-white/20 transition-all`}
-                  style={{ minHeight: "160px" }}>
+                className={`bg-[#0C1019] ${area.bgColor} relative overflow-hidden rounded-xl p-5 border shadow-lg group hover:ring-1 hover:ring-white/20 transition-all`}
+                style={{ minHeight: "160px" }}>
                   <div className="flex justify-between items-start mb-4">
                     <div className="flex items-center gap-2">
                       <div className="p-1.5 bg-white/10 rounded-lg text-white/90">{area.icon}</div>

@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation";
+
 import TemplateDemo from "@/components/demos/TemplateDemo";
 import { projects } from "@/data/projects";
 
@@ -12,12 +12,14 @@ export function generateStaticParams() {
 }
 
 import LifeOSDemo from "@/components/demos/LifeOSDemo";
+import MediaWatcherDemo from "@/components/demos/MediaWatcherDemo";
 
 // Map project IDs to their specific demo components
 const demoRegistry: Record<string, React.ReactNode> = {
   // Add future demos here when created, e.g. "media-watcher": <MediaWatcherDemo />
   "template": <TemplateDemo />,
-  "lifeos": <LifeOSDemo />
+  "lifeos": <LifeOSDemo />,
+  "media-watcher": <MediaWatcherDemo />
 };
 
 export default async function ProjectDemoPage({

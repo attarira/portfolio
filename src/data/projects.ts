@@ -14,6 +14,31 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: "finsearchai",
+    title: "FinSearchAI: Intelligent Financial Document Search & Analysis",
+    date: "Jan 2026",
+    description:
+      "A production-ready, fully local open-source semantic search and question-answering system specifically designed for financial documents.",
+    problem:
+      "Enabling secure, offline semantic search and RAG capabilities for complex financial documents without relying on external APIs.",
+    outcome:
+      "Engineered a high-performance asynchronous pipeline using FinBERT for embeddings, FAISS for vector search, and Llama 3.1 via Ollama for context-aware answers.",
+    techStack: ["Python", "FinBERT", "FAISS", "Llama 3.1", "Ollama", "Docker"],
+    demoUrl: "/coming-soon",
+  },
+  {
+    id: "plant-disease-detection",
+    title: "Plant Disease Detection System",
+    description:
+      "A computer vision system for detecting and classifying plant diseases from leaf images, combining traditional CV approaches with deep learning techniques.",
+    problem:
+      "Accurately identifying plant diseases from varied leaf images to support early agricultural intervention.",
+    outcome:
+      "Evaluated traditional CV feature extraction and CNN models on the PlantVillage dataset, deploying the optimal model via a Flask web application.",
+    techStack: ["Python", "Computer Vision", "CNN", "Flask", "Machine Learning"],
+    githubUrl: "https://github.com/attarira/plant-disease-detection",
+  },
+  {
     id: "lifeos",
     title: "LifeOS: Personal Planning & Decision Agent",
     date: "Feb 2026",

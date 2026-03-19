@@ -76,7 +76,7 @@ export const projects: Project[] = [
     outcome:
       "Engineered feature embeddings for POS tags, dependency arcs, and stack buffering, achieving a LAS score of 70 in testing.",
     techStack: ["Python", "TensorFlow"],
-    githubUrl: "/coming-soon",
+    githubUrl: "https://github.com/attarira/neural-dependency-parser",
   },
   {
     title: "Predicting Risk of Heart Disease",

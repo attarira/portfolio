@@ -339,42 +339,62 @@ function LifeOSDashboard({ initialData, dashData, setDashData, chatOpen, setChat
   if (!dashData) return null;
 
   const completedPlanner = dashData.plannerTasks.filter((t) => t.done).length;
+  
+  const AREA_GRADIENTS: Record<string, { gradient: string; iconBg: string; ringTrack: string; titleColor?: string; subtitleColor?: string; ringEmptyColor?: string; ringTextColor?: string }> = {
+    career: { gradient: 'linear-gradient(135deg, #1a3a6b 0%, #0c1f3d 100%)', iconBg: 'bg-blue-500/25', ringTrack: 'rgba(59,130,246,0.25)' },
+    health: { gradient: 'linear-gradient(135deg, #0e7490 0%, #164e63 100%)', iconBg: 'bg-cyan-400/25', ringTrack: 'rgba(6,182,212,0.25)' },
+    finance: { gradient: 'linear-gradient(135deg, #14532d 0%, #052e16 100%)', iconBg: 'bg-green-500/25', ringTrack: 'rgba(34,197,94,0.25)' },
+    relationships: { gradient: 'linear-gradient(135deg, #dc2626 0%, #991b1b 100%)', iconBg: 'bg-red-400/25', ringTrack: 'rgba(248,113,113,0.35)' },
+    "personal-growth": { gradient: 'linear-gradient(135deg, #701a75 0%, #4a044e 100%)', iconBg: 'bg-fuchsia-500/25', ringTrack: 'rgba(217,70,239,0.25)' },
+    recreation: { gradient: 'linear-gradient(135deg, #c2410c 0%, #7c2d12 100%)', iconBg: 'bg-orange-500/25', ringTrack: 'rgba(249,115,22,0.25)' },
+  };
+
+  const getGrad = (id: string) => AREA_GRADIENTS[id] || { gradient: 'linear-gradient(135deg, #253040 0%, #141c28 100%)', iconBg: 'bg-slate-400/20', ringTrack: 'rgba(148,163,184,0.2)' };
+
+  const leftPad = chatOpen ? 'xl:pl-[440px]' : 'xl:pl-[56px]';
+  const rightPad = 'xl:pr-[56px]';
 
   return (
-    <div className="bg-[#0A0D14] text-white flex flex-col font-sans" style={{ minHeight: "calc(100vh - 200px)" }}>
+    <div className="flex flex-col h-full bg-slate-950 font-sans" style={{ minHeight: "calc(100vh - 200px)" }}>
       {/* Header */}
-      <div className="flex items-center justify-between px-6 py-4 border-b border-white/[0.05] bg-[#0A0D14]">
-        <div className="flex items-center gap-4">
-          <div className="text-sm font-medium text-white/90">LifeOS <span className="text-white/40">/ Home</span></div>
-          <div className="h-4 w-px bg-white/10" />
-          <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.05] text-xs text-white/60">
-            <svg fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-3.5 h-3.5">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
-            </svg>
-            Wednesday, Mar 11
+      <header className="flex-shrink-0 bg-slate-950 border-b border-slate-800 px-6 py-4 z-10 relative">
+        <div className={`flex flex-1 items-center justify-between mx-auto transition-all ${leftPad} ${rightPad}`}>
+          <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 text-sm text-slate-300">
+              <span className="font-semibold text-white">LifeOS</span>
+              <span className="text-slate-600">/</span>
+              <span className="text-slate-400">Home</span>
+            </div>
+            <div className="h-4 w-px bg-slate-800 hidden sm:block"></div>
+            <div className="text-sm font-medium text-slate-400 hidden sm:flex items-center gap-1.5 bg-slate-900/50 px-3 py-1 rounded-full border border-slate-800/60">
+              <svg className="w-3.5 h-3.5 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+              {new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' })}
+            </div>
+          </div>
+          <div className="flex items-center gap-4 text-white/50">
+            <svg fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5 hover:text-white cursor-pointer transition-colors"><path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg>
+            <svg fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5 hover:text-white cursor-pointer transition-colors"><path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            <svg fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5 hover:text-white cursor-pointer transition-colors"><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
           </div>
         </div>
-        <div className="flex items-center gap-4 text-white/50">
-          <svg fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5 hover:text-white cursor-pointer transition-colors"><path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg>
-          <svg fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5 hover:text-white cursor-pointer transition-colors"><path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-          <svg fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5 hover:text-white cursor-pointer transition-colors"><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
-        </div>
-      </div>
+      </header>
 
       <div className="flex flex-1 overflow-hidden relative">
         {/* Left Chat Toggle */}
         <button
           onClick={() => { setChatOpen(!chatOpen); setTimeout(() => inputRef.current?.focus(), 100); }}
-          className={`w-12 border-r border-white/5 flex flex-col items-center py-6 shrink-0 relative cursor-pointer transition-colors ${chatOpen ? "bg-accent/10 border-accent/20" : "hover:bg-white/[0.02]"}`}
+          className={`w-12 border-r border-slate-800 flex flex-col items-center py-6 shrink-0 relative cursor-pointer transition-colors ${chatOpen ? "bg-indigo-500/10 border-indigo-500/20" : "hover:bg-white/[0.02]"}`}
         >
-          <div className="rotate-[-90deg] origin-center text-[9px] font-bold tracking-[0.2em] text-white/30 whitespace-nowrap absolute top-20 flex items-center gap-2">
-            <span className={`w-3 h-3 border rounded-sm flex items-center justify-center transition-colors ${chatOpen ? "border-accent text-accent" : "border-white/30"}`}>
+          <div className="rotate-[-90deg] origin-center text-[9px] font-bold tracking-[0.2em] text-slate-500 whitespace-nowrap absolute top-20 flex items-center gap-2">
+            <span className={`w-3 h-3 border rounded-sm flex items-center justify-center transition-colors ${chatOpen ? "border-indigo-400 text-indigo-400" : "border-slate-600"}`}>
               <svg viewBox="0 0 24 24" fill="currentColor" className="w-2 h-2"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
             </span>
             CHAT
           </div>
           {!chatOpen && (
-            <div className="absolute bottom-6 w-2 h-2 bg-accent rounded-full animate-pulse" />
+            <div className="absolute bottom-6 w-2 h-2 bg-indigo-400 rounded-full animate-pulse" />
           )}
         </button>
 
@@ -386,17 +406,17 @@ function LifeOSDashboard({ initialData, dashData, setDashData, chatOpen, setChat
               animate={{ width: 380, opacity: 1 }}
               exit={{ width: 0, opacity: 0 }}
               transition={{ type: "spring", damping: 25, stiffness: 250 }}
-              className="border-r border-white/5 bg-[#0C1019] flex flex-col overflow-hidden shrink-0"
+              className="border-r border-slate-800 bg-slate-950 flex flex-col overflow-hidden shrink-0"
             >
-              <div className="p-4 border-b border-white/5 flex items-center gap-3">
-                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-accent to-purple-500 flex items-center justify-center">
+              <div className="p-4 border-b border-slate-800/60 flex items-center gap-3">
+                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
                   <svg fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 text-white">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-sm font-semibold text-white/90">Planning Agent</h3>
-                  <p className="text-[10px] text-accent/70">Online • Ready to plan</p>
+                  <h3 className="text-sm font-semibold text-slate-200">Planning Agent</h3>
+                  <p className="text-[10px] text-indigo-400/80">Online • Ready to plan</p>
                 </div>
               </div>
 
@@ -406,16 +426,16 @@ function LifeOSDashboard({ initialData, dashData, setDashData, chatOpen, setChat
                   <motion.div key={msg.id} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}
                     className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
                     <div className={`max-w-[85%] rounded-xl px-3.5 py-2.5 text-xs leading-relaxed whitespace-pre-line ${
-                      msg.role === "user" ? "bg-accent/20 text-white/90 rounded-br-sm" : "bg-white/[0.04] text-white/80 border border-white/5 rounded-bl-sm"
+                      msg.role === "user" ? "bg-indigo-500/20 text-indigo-100 rounded-br-sm" : "bg-slate-800/40 text-slate-300 border border-slate-700/50 rounded-bl-sm"
                     }`}>{msg.text}</div>
                   </motion.div>
                 ))}
                 {isAgentTyping && (
                   <div className="flex justify-start">
-                    <div className="bg-white/[0.04] border border-white/5 rounded-xl px-4 py-3 flex items-center gap-1.5">
-                      <div className="w-1.5 h-1.5 bg-accent/60 rounded-full animate-bounce" style={{ animationDelay: "0ms" }} />
-                      <div className="w-1.5 h-1.5 bg-accent/60 rounded-full animate-bounce" style={{ animationDelay: "150ms" }} />
-                      <div className="w-1.5 h-1.5 bg-accent/60 rounded-full animate-bounce" style={{ animationDelay: "300ms" }} />
+                    <div className="bg-slate-800/40 border border-slate-700/50 rounded-xl px-4 py-3 flex items-center gap-1.5">
+                      <div className="w-1.5 h-1.5 bg-indigo-400/60 rounded-full animate-bounce" style={{ animationDelay: "0ms" }} />
+                      <div className="w-1.5 h-1.5 bg-indigo-400/60 rounded-full animate-bounce" style={{ animationDelay: "150ms" }} />
+                      <div className="w-1.5 h-1.5 bg-indigo-400/60 rounded-full animate-bounce" style={{ animationDelay: "300ms" }} />
                     </div>
                   </div>
                 )}
@@ -427,21 +447,21 @@ function LifeOSDashboard({ initialData, dashData, setDashData, chatOpen, setChat
                 <div className="px-4 pb-2 flex flex-wrap gap-1.5">
                   {SUGGESTED_PROMPTS.map((p) => (
                     <button key={p} onClick={() => handleSend(p)}
-                      className="px-2.5 py-1.5 text-[10px] bg-white/[0.04] border border-white/10 rounded-lg text-white/60 hover:text-white hover:bg-white/[0.08] transition-colors">
+                      className="px-2.5 py-1.5 text-[10px] bg-slate-800/30 border border-slate-700/50 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-700/50 transition-colors">
                       {p}
                     </button>
                   ))}
                 </div>
               )}
 
-              <div className="p-3 border-t border-white/5">
-                <div className="flex items-center gap-2 bg-white/[0.04] border border-white/10 rounded-xl px-3 py-2 focus-within:border-accent/30 transition-colors">
+              <div className="p-3 border-t border-slate-800/60">
+                <div className="flex items-center gap-2 bg-slate-900/50 border border-slate-700 rounded-xl px-3 py-2 focus-within:border-indigo-500/50 transition-colors">
                   <input ref={inputRef} value={inputValue} onChange={(e) => setInputValue(e.target.value)}
                     onKeyDown={(e) => e.key === "Enter" && handleSend()}
                     placeholder="Tell me your goal..." disabled={isAgentTyping}
-                    className="flex-1 bg-transparent text-xs text-white/90 placeholder:text-white/30 outline-none disabled:opacity-50" />
+                    className="flex-1 bg-transparent text-xs text-slate-200 placeholder:text-slate-500 outline-none disabled:opacity-50" />
                   <button onClick={() => handleSend()} disabled={isAgentTyping || !inputValue.trim()}
-                    className="p-1.5 rounded-lg bg-accent/20 text-accent hover:bg-accent/30 transition-colors disabled:opacity-30 disabled:cursor-not-allowed">
+                    className="p-1.5 rounded-lg bg-indigo-500/20 text-indigo-400 hover:bg-indigo-500/30 transition-colors disabled:opacity-30 disabled:cursor-not-allowed">
                     <svg fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-3.5 h-3.5">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
                     </svg>
@@ -452,92 +472,184 @@ function LifeOSDashboard({ initialData, dashData, setDashData, chatOpen, setChat
           )}
         </AnimatePresence>
 
-        {/* Main Dashboard */}
-        <div className="flex-1 overflow-y-auto p-8 flex gap-8">
-          <div className="flex-1 max-w-4xl">
-            <h2 className="text-sm font-semibold text-white mb-4 tracking-wide">Focus Areas</h2>
-            <div className="grid grid-cols-2 gap-4">
-              {dashData.focusAreas.map((area, idx) => (
-                <motion.div key={area.id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: idx * 0.05 }}
-                className={`bg-[#0C1019] ${area.bgColor} relative overflow-hidden rounded-xl p-5 border shadow-lg group hover:ring-1 hover:ring-white/20 transition-all`}
-                style={{ minHeight: "160px" }}>
-                  <div className="flex justify-between items-start mb-4">
-                    <div className="flex items-center gap-2">
-                      <div className="p-1.5 bg-white/10 rounded-lg text-white/90">{area.icon}</div>
-                      <h3 className="font-semibold text-white/90 text-sm flex items-center gap-2">
-                        {area.title}
-                        {area.alert && <svg className="w-3 h-3 text-red-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L1 21h22M12 6l7.5 13h-15M11 10h2v4h-2M11 16h2v2h-2"/></svg>}
-                      </h3>
-                    </div>
-                    <button className="text-white/20 hover:text-white/60 transition-colors">
-                      <svg fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4"><path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" /></svg>
-                    </button>
-                  </div>
-                  <div className="space-y-1 mb-6">
-                    {area.tasks.map((task, i) => (
-                      <p key={i} className="text-xs text-white/70 truncate">{task}</p>
-                    ))}
-                  </div>
-                  <div className="absolute bottom-5 flex flex-col items-start gap-1">
-                    {area.actionItems.map((item, i) => (
-                      <button key={i} className="flex items-center gap-1.5 px-3 py-1 bg-white/10 hover:bg-white/20 rounded-full text-[10px] font-medium text-white/80 transition-colors">
-                        <svg fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-3 h-3"><path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" /></svg>
-                        {item}
-                      </button>
-                    ))}
-                  </div>
-                  <div className="absolute bottom-4 right-5">
-                    <TaskStatusRing tasks={area.totalTasks} segments={area.segments} />
-                  </div>
-                </motion.div>
-              ))}
+        {/* Main Dashboard section */}
+        <main className="flex-1 overflow-auto bg-slate-950">
+          <div className={`p-8 w-full max-w-[1400px] mx-auto transition-all`}>
+            
+            <div className="mb-8">
+              <h1 className="text-[22px] font-semibold text-white tracking-tight">
+                {(() => {
+                  const hour = new Date().getHours();
+                  if (hour < 12) return 'Good morning, Rayaan';
+                  if (hour < 17) return 'Good afternoon, Rayaan';
+                  return 'Good evening, Rayaan';
+                })()}
+              </h1>
             </div>
-          </div>
 
-          {/* Right Sidebar */}
-          <div className="w-[320px] flex flex-col shrink-0 gap-6">
-            <h2 className="text-sm font-semibold text-white tracking-wide">Planner & Upcoming</h2>
-            <div className="bg-[#141A29] border border-white/5 rounded-xl p-4 shadow-lg shrink-0">
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center gap-2 text-white/50 text-xs font-bold tracking-widest">
-                  <div className="p-1.5 bg-white/5 rounded-md"><svg fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4"><path strokeLinecap="round" strokeLinejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" /></svg></div>
-                  PLANNER
-                </div>
-                <span className="text-white/30 text-xs font-mono">{completedPlanner}/{dashData.plannerTasks.length}</span>
-              </div>
-              <div className="flex items-center gap-2 px-3 py-2 bg-white/5 border border-white/10 rounded-lg mb-4 text-xs text-white/50 cursor-pointer hover:bg-white/10 transition-colors">
-                <svg fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-3.5 h-3.5"><path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
-                Add task or search...
-              </div>
-              <div className="space-y-3 max-h-[300px] overflow-y-auto">
-                {dashData.plannerTasks.map((pt) => (
-                  <div key={pt.id} className="flex items-center justify-between group">
-                    <label className="flex items-center gap-3 cursor-pointer"
-                      onClick={() => setDashData({ ...dashData, plannerTasks: dashData.plannerTasks.map((t) => t.id === pt.id ? { ...t, done: !t.done } : t) })}>
-                      <div className={`w-3.5 h-3.5 rounded border flex items-center justify-center transition-colors ${pt.done ? "bg-accent border-accent" : "border-white/20 group-hover:border-white/50"}`}>
-                        {pt.done && <svg viewBox="0 0 12 12" fill="none" className="w-2.5 h-2.5"><path d="M2.5 6l2.5 2.5 4.5-5" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>}
-                      </div>
-                      <span className={`text-xs transition-colors ${pt.done ? "text-white/40 line-through" : "text-white/80 group-hover:text-white"}`}>{pt.title}</span>
-                    </label>
-                    <span className={`text-[9px] px-2 py-0.5 rounded-full font-medium tracking-wide ${pt.categoryColor}`}>{pt.category}</span>
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-8 items-start">
+              {/* LEFT: Focus Areas */}
+              <div className="space-y-6">
+                
+                {/* Aggregate Statistics */}
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                  <div className="rounded-2xl border border-slate-800/60 bg-slate-900/50 p-5 flex flex-col justify-center">
+                    <span className="text-3xl font-bold text-white">
+                      {dashData.focusAreas.reduce((a, b) => a + b.totalTasks, 0)}
+                    </span>
+                    <span className="text-[11px] font-medium text-slate-500 uppercase tracking-wider mt-1.5">Total Active</span>
                   </div>
-                ))}
+                  <div className="rounded-2xl border border-slate-800/60 bg-slate-900/50 p-5 flex flex-col justify-center">
+                    <span className="text-3xl font-bold text-amber-400">12</span>
+                    <span className="text-[11px] font-medium text-amber-500/70 uppercase tracking-wider mt-1.5">In Progress</span>
+                  </div>
+                  <div className="rounded-2xl border border-slate-800/60 bg-slate-900/50 p-5 flex flex-col justify-center">
+                    <span className="text-3xl font-bold text-blue-400">4</span>
+                    <span className="text-[11px] font-medium text-blue-500/70 uppercase tracking-wider mt-1.5">On Hold</span>
+                  </div>
+                  <div className="rounded-2xl border border-slate-800/60 bg-slate-900/50 p-5 flex flex-col justify-center">
+                    <span className="text-3xl font-bold text-emerald-400">18</span>
+                    <span className="text-[11px] font-medium text-emerald-500/70 uppercase tracking-wider mt-1.5">Completed</span>
+                  </div>
+                </div>
+
+                {/* Focus Areas Cards */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {dashData.focusAreas.map((area, idx) => {
+                    const grad = getGrad(area.id);
+                    return (
+                      <motion.div key={area.id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: idx * 0.05 }}
+                        className="group relative overflow-hidden flex flex-col rounded-2xl text-left transition-all select-none hover:shadow-xl hover:-translate-y-0.5 cursor-pointer ring-1 ring-white/5"
+                        style={{ background: grad.gradient, minHeight: '190px' }}
+                      >
+                        {/* Top row */}
+                        <div className="flex items-start justify-between p-5 pb-0">
+                          <div className="flex items-center gap-3">
+                            <div className={`flex h-11 w-11 items-center justify-center rounded-xl flex-shrink-0 ${grad.iconBg} ${!grad.iconBg.includes('text-') ? 'text-white/80' : ''}`}>
+                              {area.icon}
+                            </div>
+                            <h3 className={`text-[16px] font-semibold leading-tight ${grad.titleColor || 'text-white'}`}>{area.title}</h3>
+                            {area.alert && (
+                              <span className="inline-flex items-center rounded-full bg-red-500/10 text-red-400 p-1.5 shrink-0" title="Due soon">
+                                <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+                                  <path d="M12 2a1 1 0 01.894.553l9 18A1 1 0 0121 22H3a1 1 0 01-.894-1.447l9-18A1 1 0 0112 2zm0 6a1 1 0 00-1 1v4a1 1 0 001 1h.01a1 1 0 001-1V9a1 1 0 00-1.01-1zM12 17a1.25 1.25 0 100-2.5A1.25 1.25 0 0012 17z" />
+                                </svg>
+                              </span>
+                            )}
+                          </div>
+                        </div>
+
+                        {/* Middle */}
+                        <div className="flex-1 px-5 pt-4 pb-2 flex flex-col justify-center">
+                          {area.tasks.length > 0 ? (
+                            <div className="flex flex-col gap-1.5">
+                              {area.tasks.slice(0, 3).map((item: string, i: number) => (
+                                <div key={i} className={`text-[13px] leading-snug truncate ${grad.subtitleColor || 'text-white/70'}`}>{item}</div>
+                              ))}
+                            </div>
+                          ) : (
+                            <p className={`text-[13px] ${grad.ringEmptyColor || 'text-white/30'}`}>No active focus.</p>
+                          )}
+                        </div>
+
+                        {/* Bottom */}
+                        <div className="flex items-end justify-between p-5 pt-0 mt-2">
+                          <div className="min-w-0 flex-1 flex flex-col items-start gap-1.5 pr-4">
+                            {area.actionItems.length > 0 && (
+                              <button
+                                type="button"
+                                className={`inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-[11px] max-w-full truncate transition-colors border ${grad.titleColor ? 'bg-slate-100/50 text-slate-500 hover:bg-slate-200/50 border-transparent' : 'bg-white/[0.07] backdrop-blur-sm text-white/50 hover:bg-white/[0.12] hover:text-white border-white/5'}`}
+                              >
+                                <span className={`flex-shrink-0 ${grad.titleColor ? 'text-slate-500' : 'text-white/60'}`}>
+                                  <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                    <path d="M5 12h14" />
+                                    <path d="m12 5 7 7-7 7" />
+                                  </svg>
+                                </span>
+                                <span className="truncate">{area.actionItems[0]}</span>
+                              </button>
+                            )}
+                          </div>
+
+                          <div className="relative flex-shrink-0 flex items-center justify-center" style={{ width: 72, height: 72 }}>
+                            <svg width={72} height={72} viewBox="0 0 72 72" className="absolute inset-0 pointer-events-none transform -rotate-90">
+                              <circle cx={36} cy={36} r={33} stroke={grad.ringTrack} strokeWidth={6} fill="none" />
+                              {(() => {
+                                let currentOffset = 0;
+                                const circumference = 2 * Math.PI * 33;
+                                return area.segments.map((seg, i) => {
+                                  let off = -currentOffset;
+                                  let da = `${(seg.value / 100) * circumference} ${circumference}`;
+                                  currentOffset += (seg.value / 100) * circumference;
+                                  return (
+                                    <circle key={i} cx="36" cy="36" r={33} fill="none" stroke={seg.color} strokeWidth="6" strokeDasharray={da} strokeDashoffset={off} strokeLinecap="round" className="transition-all duration-1000 ease-out" />
+                                  );
+                                });
+                              })()}
+                            </svg>
+                            <div className="absolute inset-[8px] rounded-full pointer-events-none bg-black/40 backdrop-blur-sm flex flex-col items-center justify-center text-center z-20">
+                              <div className={`text-[15px] font-bold ${grad.ringTextColor || 'text-white'}`}>{area.totalTasks}</div>
+                              <div className={`text-[8px] uppercase tracking-[0.2em] font-medium ${grad.ringEmptyColor || 'text-white/50'}`}>Tasks</div>
+                            </div>
+                          </div>
+                        </div>
+                      </motion.div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* RIGHT: Planner & Upcoming */}
+              <div className="space-y-6 lg:sticky lg:top-8 w-full">
+                
+                {/* Planner */}
+                <div className="rounded-2xl border border-slate-800 bg-slate-900 shadow-xl overflow-hidden shrink-0">
+                  <div className="p-4 border-b border-slate-800/60 flex items-center justify-between">
+                    <div className="flex items-center gap-2 text-slate-400 text-[10px] font-bold tracking-[0.15em] uppercase">
+                       Planner
+                    </div>
+                    <span className="text-slate-500 text-[11px] font-medium">{completedPlanner}/{dashData.plannerTasks.length} Done</span>
+                  </div>
+                  <div className="p-2 space-y-0.5">
+                    {dashData.plannerTasks.map((pt) => (
+                      <div key={pt.id} className="flex items-center justify-between group p-2 hover:bg-slate-800/40 rounded-xl transition-colors">
+                        <label className="flex items-center gap-3 cursor-pointer select-none truncate"
+                          onClick={() => setDashData({ ...dashData, plannerTasks: dashData.plannerTasks.map((t) => t.id === pt.id ? { ...t, done: !t.done } : t) })}>
+                          <div className={`flex-shrink-0 w-4 h-4 rounded-md border-[1.5px] flex items-center justify-center transition-colors ${pt.done ? "bg-slate-600 border-slate-600" : "border-slate-500 group-hover:border-slate-400"}`}>
+                            {pt.done && <svg viewBox="0 0 12 12" fill="none" className="w-2.5 h-2.5"><path d="M2.5 6l2.5 2.5 4.5-5" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>}
+                          </div>
+                          <span className={`text-[13px] truncate transition-colors ${pt.done ? "text-slate-500 line-through" : "text-slate-200 group-hover:text-white"}`}>{pt.title}</span>
+                        </label>
+                        <span className={`flex-shrink-0 text-[10px] px-2 py-0.5 rounded-md font-medium ${pt.categoryColor.replace('900/40', '500/10').replace('500/20', '600/20').replace('text-', 'text-opacity-80 text-')}`}>{pt.category}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Upcoming */}
+                <div className="rounded-2xl border border-slate-800 bg-slate-900 shadow-xl overflow-hidden">
+                  <div className="px-4 py-3.5 border-b border-slate-800/60 flex items-center">
+                    <p className="text-[10px] uppercase tracking-[0.16em] text-slate-400 font-bold">Upcoming</p>
+                  </div>
+                  <div className="px-4 py-8 flex flex-col items-center justify-center text-center">
+                    <svg className="w-8 h-8 text-slate-700/50 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <p className="text-[13px] text-slate-500 font-medium">No upcoming tasks<br/>in the next week</p>
+                  </div>
+                </div>
+
               </div>
             </div>
-            <div className="bg-[#141A29] border border-white/5 rounded-xl p-4 shadow-lg flex-1 min-h-[120px]">
-              <h3 className="text-white/50 text-[10px] font-bold tracking-widest mb-6">UPCOMING</h3>
-              <div className="flex items-center justify-center h-full">
-                <p className="text-xs text-white/30 pb-4">No upcoming tasks in the next week.</p>
-              </div>
-            </div>
+
           </div>
-        </div>
+        </main>
 
         {/* Right decorative sidebar */}
-        <div className="w-12 border-l border-white/5 flex-col items-center py-6 shrink-0 relative hidden lg:flex">
-          <div className="rotate-[-90deg] origin-center text-[9px] font-bold tracking-[0.2em] text-white/30 whitespace-nowrap absolute top-20 flex items-center gap-2">
-            <span className="w-3 h-3 border border-white/30 rounded-sm flex items-center justify-center">
+        <div className="w-12 border-l border-slate-800 flex-col items-center py-6 shrink-0 relative hidden lg:flex">
+          <div className="rotate-[-90deg] origin-center text-[9px] font-bold tracking-[0.2em] text-slate-500 whitespace-nowrap absolute top-20 flex items-center gap-2 cursor-pointer hover:text-slate-300">
+            <span className="w-3 h-3 border border-slate-600 rounded-sm flex items-center justify-center">
               <svg fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-2 h-2"><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/></svg>
             </span>
             FILES

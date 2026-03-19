@@ -21,7 +21,7 @@ export default function Blog() {
       <div className="mx-auto max-w-4xl">
         <SectionHeading
           title="Writing"
-          subtitle="Thoughts and technical deep-dives on machine learning, systems architecture, and AI engineering."
+          subtitle="Random thoughts on whatever I'm currently working on or just things I find interesting."
         />
 
         <div className="flex flex-col gap-6 min-h-[500px]">

@@ -47,12 +47,10 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
           >
-            <h1 className="text-5xl font-extrabold tracking-tight text-white sm:text-7xl lg:text-8xl">
+            <h1 className="text-5xl font-extrabold tracking-tight text-white sm:text-7xl lg:text-8xl whitespace-nowrap">
               Rayaan Attari
             </h1>
-            <p className="mt-4 text-xs font-medium tracking-[0.25em] text-blue-200/70 uppercase sm:text-sm">
-              Machine Learning Engineer
-            </p>
+
           </motion.div>
 
           <motion.p
@@ -61,7 +59,7 @@ export default function Hero() {
             transition={{ duration: 0.5, delay: 0.15, ease: "easeOut" }}
             className="mt-8 text-base font-light leading-relaxed text-slate-300 sm:text-lg"
           >
-            I&apos;m a Machine Learning Engineer with 3+ years of experience building and deploying real-world AI systems across healthcare, fintech, and enterprise software. My work sits at the intersection of applied machine learning, product, and infrastructure, from early prototypes to production systems running in the cloud on GCP and AWS.
+            Over the past 3+ years, I’ve worked across healthcare, fintech, and enterprise software, focusing on making machine learning practical, scalable, and reliable in production.
           </motion.p>
 
           <motion.div

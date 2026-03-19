@@ -10,7 +10,6 @@ export default function Skills() {
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           title="Skills"
-          subtitle="Technologies and tools I work with regularly."
         />
 
         <div className="grid gap-8 sm:grid-cols-2">

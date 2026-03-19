@@ -254,7 +254,6 @@ export default function Contact() {
       <div className="mx-auto max-w-3xl">
         <SectionHeading
           title="Contact"
-          subtitle="Open to opportunities, collaborations, and interesting conversations."
         />
 
         <div className="space-y-10">
@@ -272,13 +271,13 @@ export default function Contact() {
             <div className="space-y-3">
               <EmailRow
                 email="rayaan.attari@gmail.com"
-                label="PERSONAL (gmail)"
+                label="PERSONAL"
                 icon={<MailIcon className="h-5 w-5" />}
                 delay={0.05}
               />
               <EmailRow
                 email="rta2125@columbia.edu"
-                label="WORK (columbia)"
+                label="SECONDARY"
                 icon={<GraduationCapIcon className="h-5 w-5" />}
                 delay={0.1}
               />
@@ -294,7 +293,7 @@ export default function Contact() {
               transition={{ duration: 0.4, delay: 0.1 }}
               className="mb-3 text-[11px] font-semibold tracking-[0.2em] text-muted-foreground/50 uppercase"
             >
-              Professional Profiles
+              Profiles
             </motion.p>
             <div className="grid gap-3 sm:grid-cols-2">
               <SocialCard

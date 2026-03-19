@@ -47,7 +47,7 @@ export default function Projects() {
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           title="Projects"
-          subtitle="Selected work across healthcare AI, fintech ML systems, and cloud infrastructure."
+          subtitle="Random projects I've worked on, ranging from healthcare AI to fintech ML systems and cloud infrastructure."
         />
 
         <div

@@ -10,7 +10,6 @@ export default function Experience() {
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           title="Experience"
-          subtitle="3+ years building AI systems across healthcare, fintech, and enterprise software."
         />
 
         <div className="relative mx-auto mt-16 max-w-3xl">
